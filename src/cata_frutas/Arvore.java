@@ -9,16 +9,11 @@ package cata_frutas;
  *
  * @author rafael
  */
-
-public class Floresta {
-    int m;
-    int[][] floresta;
+public class Arvore {
+    boolean estatico;
     
-    public Floresta(int m) {
-        this.floresta = new int[m][m];
+    public Arvore(){
+        
     }
-    
-    
-    
     
 }

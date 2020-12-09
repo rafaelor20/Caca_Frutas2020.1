@@ -15,8 +15,9 @@ public class Fruta {
     int agilidade;
     int pontos;
     boolean antidoto;
+    boolean estatico;
 
-    public void fruta(String tipo){
+    public Fruta(String tipo){
         this.tipo = tipo;
         switch (this.tipo){
             case "maracuja":
@@ -60,12 +61,8 @@ public class Fruta {
                 this.agilidade = 1;
                 this.pontos = 0;
                 this.antidoto = false;
-            
-            case default:
-                this.força = 1;
-                this.agilidade = 1;
-                this.pontos = 0;
-                this.antidoto = false;
+        
         }
+        this.estatico = false;
     }
 }

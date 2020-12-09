@@ -15,8 +15,9 @@ public class Avatar {
     int agilidade;
     int pontos;
     boolean doente;
+    boolean estatico;
     
-    public void avatar(String Nome, int força, int agilidade, int pontos, boolean doente){
+    public Avatar(String Nome, int força, int agilidade, int pontos, boolean doente){
         this.Nome = Nome;
         this.força = força;
         this.agilidade = agilidade;

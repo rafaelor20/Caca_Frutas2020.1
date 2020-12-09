@@ -9,16 +9,11 @@ package cata_frutas;
  *
  * @author rafael
  */
-
-public class Floresta {
-    int m;
-    int[][] floresta;
+public class Dado {
+    int[] lados = new int[6];
     
-    public Floresta(int m) {
-        this.floresta = new int[m][m];
+    public Dado (int[] lados){
+        this.lados = lados;
     }
-    
-    
-    
     
 }
