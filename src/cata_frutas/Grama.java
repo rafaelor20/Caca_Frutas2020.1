@@ -11,6 +11,7 @@ package cata_frutas;
  */
 public class Grama {
     boolean estatico;
+    int custoPAgilidade;
     
     public Grama(){
         

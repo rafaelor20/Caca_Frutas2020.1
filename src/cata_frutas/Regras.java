@@ -9,12 +9,8 @@ package cata_frutas;
  *
  * @author rafael
  */
-public class Pedra {
-    boolean estatico;
-    int custoPAgilidade;
+public class Regras {
+    int minPVitoria;
     
-    public Pedra (){ 
-        
-    }
     
 }
