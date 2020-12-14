@@ -9,15 +9,17 @@ package cata_frutas;
  *
  * @author rafael
  */
-public class Grama extends Item {
-    int custoPAgilidade;
+public class Item {
+    int posiçãoX;
+    int posiçãoY;
+    boolean estatico;
 
-    public Grama(boolean estatico, int custoPAgilidade, int posiçãoX, int posiçãoY) {
-        super(posiçãoX, posiçãoY, estatico);
-        this.custoPAgilidade = custoPAgilidade;
+    public Item(int posiçãoX, int posiçãoY, boolean estatico) {
+        this.posiçãoX = posiçãoX;
+        this.posiçãoY = posiçãoY;
+        this.estatico = estatico;
     }
     
     
-
     
 }

@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @author rafael
  */
 public class Mochila {
-    int capacidade;
+    int capacidade; // total de frutas/3
     ArrayList<Fruta> inventario;
     
     public Mochila(int capacidade, ArrayList<Fruta> inventario){

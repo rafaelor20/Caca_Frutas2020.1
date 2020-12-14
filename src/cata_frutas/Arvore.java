@@ -9,11 +9,20 @@ package cata_frutas;
  *
  * @author rafael
  */
-public class Arvore {
-    boolean estatico;
-    
-    public Arvore(){
-        
+public class Arvore extends Item{
+    int periodoFrutaArvore;
+    Fruta tipo;
+
+    public Arvore(int periodoFrutaArvore, Fruta tipo, int posiçãoX, int posiçãoY, boolean estatico) {
+        super(posiçãoX, posiçãoY, estatico);
+        this.periodoFrutaArvore = periodoFrutaArvore;
+        this.tipo = tipo;
     }
+    
+    
+
+    
+    
+    
     
 }

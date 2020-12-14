@@ -4,3 +4,5 @@
 /build.xml
 /manifest.mf
 /nbproject/project.xml
+/build/
+/dist/

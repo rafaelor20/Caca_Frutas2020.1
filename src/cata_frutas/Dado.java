@@ -4,16 +4,25 @@
  * and open the template in the editor.
  */
 package cata_frutas;
+import java.util.Random;
 
 /**
  *
  * @author rafael
  */
 public class Dado {
-    int[] lados = new int[6];
+    Random aleatorio;
+    int max;
+    int lado;
     
-    public Dado (int[] lados){
-        this.lados = lados;
+    public Dado (int max){
+        this.aleatorio = new Random();
+        this.max = max;
+        this.lado = 1;
+    }
+    
+    public int rolarDado (){
+        return this.lado = this.aleatorio.nextInt(this.max) + 1;        
     }
     
 }

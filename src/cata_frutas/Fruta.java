@@ -9,57 +9,57 @@ package cata_frutas;
  *
  * @author rafael
  */
-public class Fruta {
+public class Fruta extends Item{
     String tipo;
     int força;
     int agilidade;
-    int pontos;
+    int ouro;
     boolean antidoto;
-    boolean estatico;
 
-    public Fruta(String tipo){
+    public Fruta(int posiçãoX, int posiçãoY, boolean estatico, String tipo){
+        super(posiçãoX, posiçãoY, estatico);
         this.tipo = tipo;
         switch (this.tipo){
             case "maracuja":
                 this.força = 1;
                 this.agilidade = 1;
-                this.pontos = 1;
+                this.ouro = 1;
                 this.antidoto = false;
            
             case "coco":
                 this.força = 1;
                 this.agilidade = 2;
-                this.pontos = 0;
+                this.ouro = 0;
                 this.antidoto = false;
             
             case "abacate":
                 this.força = 2;
                 this.agilidade = 1;
-                this.pontos = 0;
+                this.ouro = 0;
                 this.antidoto = false;
             
             case "laranja":
                 this.força = 1;
                 this.agilidade = 1;
-                this.pontos = 0;
+                this.ouro = 0;
                 this.antidoto = true;
             
             case "morango":
                 this.força = 1;
                 this.agilidade = 1;
-                this.pontos = 0;
+                this.ouro = 0;
                 this.antidoto = false;
             
             case "amora":
                 this.força = 1;
                 this.agilidade = 1;
-                this.pontos = 0;
+                this.ouro = 0;
                 this.antidoto = false;
             
             case "uva":
                 this.força = 1;
                 this.agilidade = 1;
-                this.pontos = 0;
+                this.ouro = 0;
                 this.antidoto = false;
         
         }
