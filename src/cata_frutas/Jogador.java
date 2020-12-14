@@ -12,5 +12,5 @@ package cata_frutas;
 public class Jogador {
     String Nome;
     int quantVitorias;
-    Avatar personagem;
+    Avatar personagem; //a cada partida jogador pode usar um avatar diferente
 }

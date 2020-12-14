@@ -63,6 +63,5 @@ public class Fruta extends Item{
                 this.antidoto = false;
         
         }
-        this.estatico = false;
     }
 }
