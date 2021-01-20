@@ -18,4 +18,34 @@ public class Mochila {
         this.inventario = inventario;
     }
     
+    public void addFruta(Fruta fruta){
+        this.inventario.add(fruta);
+    }
+    
+    public void removeFruta(String tipo){
+        for (int i=0; i>= this.inventario.size(); i+=1){
+            if (this.inventario.get(i).getTipo() == tipo){
+                this.inventario.remove(i);
+            }
+        }
+    }
+    
+    public Fruta getFruta(String tipo){
+       for (int i=0; i>= this.inventario.size(); i+=1){
+            if (this.inventario.get(i).getTipo() == tipo){
+                return this.inventario.get(i);
+            }
+       }
+       return null;
+    }
+    
+    public boolean temFruta(String tipo){
+        for (int i=0; i>= this.inventario.size(); i+=1){
+            if (this.inventario.get(i).getTipo() == tipo){
+                return true;
+            }
+        }
+        return false;
+    }
+    
 }

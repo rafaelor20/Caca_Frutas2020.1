@@ -64,4 +64,45 @@ public class Fruta extends Item{
         
         }
     }
+
+    public String getTipo() {
+        return this.tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public int getForça() {
+        return this.força;
+    }
+
+    public void setForça(int força) {
+        this.força = this.força;
+    }
+
+    public int getAgilidade() {
+        return this.agilidade;
+    }
+
+    public void setAgilidade(int agilidade) {
+        this.agilidade = agilidade;
+    }
+
+    public int getOuro() {
+        return this.ouro;
+    }
+
+    public void setOuro(int ouro) {
+        this.ouro = ouro;
+    }
+
+    public boolean getAntidoto() {
+        return this.antidoto;
+    }
+
+    public void setAntidoto(boolean antidoto) {
+        this.antidoto = antidoto;
+    }
+    
 }

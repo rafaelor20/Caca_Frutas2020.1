@@ -19,7 +19,29 @@ public class Item {
         this.posiçãoY = posiçãoY;
         this.estatico = estatico;
     }
-    
-    
+
+    public int getPosiçãoX() {
+        return posiçãoX;
+    }
+
+    public void setPosiçãoX(int posiçãoX) {
+        this.posiçãoX = posiçãoX;
+    }
+
+    public int getPosiçãoY() {
+        return posiçãoY;
+    }
+
+    public void setPosiçãoY(int posiçãoY) {
+        this.posiçãoY = posiçãoY;
+    }
+
+    public boolean isEstatico() {
+        return estatico;
+    }
+
+    public void setEstatico(boolean estatico) {
+        this.estatico = estatico;
+    }
     
 }

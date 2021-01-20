@@ -11,17 +11,29 @@ package cata_frutas;
  */
 public class Arvore extends Item{
     int periodoFrutaArvore;
-    Fruta tipo;
+    String tipo;
 
-    public Arvore(int periodoFrutaArvore, Fruta tipo, int posiçãoX, int posiçãoY, boolean estatico) {
+    public Arvore(boolean estatico, int posiçãoX, int posiçãoY, int periodoFrutaArvore, String tipo) {
         super(posiçãoX, posiçãoY, estatico);
         this.periodoFrutaArvore = periodoFrutaArvore;
         this.tipo = tipo;
     }
-    
-    
 
-    
+    public int getPeriodoFrutaArvore() {
+        return periodoFrutaArvore;
+    }
+
+    public void setPeriodoFrutaArvore(int periodoFrutaArvore) {
+        this.periodoFrutaArvore = periodoFrutaArvore;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
     
     
     
