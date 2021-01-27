@@ -17,8 +17,9 @@ public class Avatar extends Item{
     int PVitoria;
     boolean saudavel;
     Mochila mochila;
+    
 
-    public Avatar(int posiçãoX, int posiçãoY, boolean estatico, String Nome, int PForça, int PDefesa, int PAgilidade, int PVitoria, boolean saudavel, Mochila mochila) {
+    public Avatar(int posiçãoX, int posiçãoY, boolean estatico, String Nome, int PForça, int PDefesa, int PAgilidade, int PVitoria, boolean saudavel) {
         super(posiçãoX, posiçãoY, estatico);
         this.Nome = Nome;
         this.PForça = PForça;
@@ -26,7 +27,7 @@ public class Avatar extends Item{
         this.PAgilidade = PAgilidade;
         this.PVitoria = PVitoria;
         this.saudavel = saudavel;
-        this.mochila = mochila;
+        this.mochila = new Mochila(9);
     }
     
     public void usarFruta(String tipo){

@@ -15,8 +15,9 @@ public class Fruta extends Item{
     int agilidade;
     int ouro;
     boolean antidoto;
+    boolean bichada;
 
-    public Fruta(int posiçãoX, int posiçãoY, boolean estatico, String tipo){
+    public Fruta(int posiçãoX, int posiçãoY, boolean estatico, String tipo, boolean bichada){
         super(posiçãoX, posiçãoY, estatico);
         this.tipo = tipo;
         switch (this.tipo){
@@ -25,42 +26,49 @@ public class Fruta extends Item{
                 this.agilidade = 1;
                 this.ouro = 1;
                 this.antidoto = false;
+                this.bichada = bichada;
            
             case "coco":
                 this.força = 1;
                 this.agilidade = 2;
                 this.ouro = 0;
                 this.antidoto = false;
+                this.bichada = bichada;
             
             case "abacate":
                 this.força = 2;
                 this.agilidade = 1;
                 this.ouro = 0;
                 this.antidoto = false;
+                this.bichada = bichada;
             
             case "laranja":
                 this.força = 1;
                 this.agilidade = 1;
                 this.ouro = 0;
                 this.antidoto = true;
+                this.bichada = bichada;
             
             case "morango":
                 this.força = 1;
                 this.agilidade = 1;
                 this.ouro = 0;
                 this.antidoto = false;
+                this.bichada = bichada;
             
             case "amora":
                 this.força = 1;
                 this.agilidade = 1;
                 this.ouro = 0;
                 this.antidoto = false;
+                this.bichada = bichada;
             
             case "uva":
                 this.força = 1;
                 this.agilidade = 1;
                 this.ouro = 0;
                 this.antidoto = false;
+                this.bichada = bichada;
         
         }
     }
@@ -103,6 +111,14 @@ public class Fruta extends Item{
 
     public void setAntidoto(boolean antidoto) {
         this.antidoto = antidoto;
+    }
+
+    public boolean isBichada() {
+        return this.bichada;
+    }
+
+    public void setBichada(boolean bichada) {
+        this.bichada = bichada;
     }
     
 }

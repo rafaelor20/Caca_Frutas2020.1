@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package cata_frutas;
+
 import java.util.ArrayList;
 /**
  *
@@ -13,13 +14,15 @@ public class Mochila {
     int capacidade; // total de frutas/3
     ArrayList<Fruta> inventario;
     
-    public Mochila(int capacidade, ArrayList<Fruta> inventario){
+    public Mochila(int capacidade){
         this.capacidade = capacidade;
-        this.inventario = inventario;
+        this.inventario = new ArrayList<Fruta>();
     }
     
     public void addFruta(Fruta fruta){
-        this.inventario.add(fruta);
+        if (this.inventario.size() < this.capacidade){
+            this.inventario.add(fruta);
+        }
     }
     
     public void removeFruta(String tipo){
