@@ -19,8 +19,7 @@ public class Floresta {
     Arvore[][] arvores; // tabuleiro para arvores
     Avatar[][] avatares; // tabuleiro para avatares
     ArrayList<Fruta>[][] frutas;/* tabuleiro para listas de frutas, permitindo 
-                                   que várias frutas ocupem uma mesma posição*/
-    
+                                   que várias frutas ocupem uma mesma posição*/    
     int tamanhoFloresta;
     float quantArvores; // <= quantGrama
     float quantPedras; // m/4
@@ -41,11 +40,11 @@ public class Floresta {
         this.terreno = new Item[m][m];
         this.arvores = new Arvore[m][m];
         this.avatares = new Avatar[m][m];
-        this.frutas = new ArrayList[m][m];
-        
+        this.frutas = new ArrayList[m][m];       
     }
     
-    public Item[][] inserirGP(Item item, int m){ //insere gramas e pedras em this.terreno
+    public Item[][] inserirGP(Item item, int m){ 
+        //insere gramas e pedras em this.terreno
         int temp = 0;
         while (temp==0){
             int i = new Random().nextInt(m); //posicao x em this.terreno
@@ -60,7 +59,8 @@ public class Floresta {
         return this.terreno;
     }
     
-    public void Gramado(int m){ //cria objetos Grama e os inserem em this.terreno
+    public void Gramado(int m){ 
+        //cria objetos Grama e os inserem em this.terreno
         int k = 0; //posicao x
         int j = 0; //posicao y
         int c = 1; //custoAgilidade
@@ -70,7 +70,8 @@ public class Floresta {
         }
     }
     
-    public void Pedras(int m){ //cria objetos Pedra e os inserem em this.terreno
+    public void Pedras(int m){ 
+        //cria objetos Pedra e os inserem em this.terreno
         int k = 0; //posicao x
         int j = 0; //posicao y
         int c = 3; //custoAgilidade
@@ -80,7 +81,8 @@ public class Floresta {
         }
     }
     
-    public Arvore[][] inserirA(Arvore arvore, int m){ //insere obejtos Arvore em this.arvores
+    public Arvore[][] inserirA(Arvore arvore, int m){ 
+        //insere obejtos Arvore em this.arvores
         int temp = 0;
         while (temp==0){
             int i = new Random().nextInt(m);//posicao x
@@ -127,7 +129,25 @@ public class Floresta {
             inserirA(arvore, m);}  
     }
     
+    public Avatar[][] inserirAvatar(Avatar avatar, int m){
+        //insere obejto Avatar em this.avatares em posicao aleatoria
+        int temp = 0;
+        while (temp==0){
+            int i = new Random().nextInt(m);//posicao x
+            int j = new Random().nextInt(m);//posicao y
+            if (this.terreno[i][j] instanceof Grama && this.avatares[i][j] == null){
+                this.avatares[i][j] = avatar;
+                avatar.setPosiçãoX(i);
+                avatar.setPosiçãoY(j);
+                temp = 1;
+            }         
+        }        
+        return this.avatares;
+    }
+    
     public void CriaArrayListFrutas(int m){
+        /*cria arraylists em que as frutas serao depositadas de acordo com a
+          sua psicao*/
         for (int i=0;i<=m;i+=1){
             for(int j=0;j<=m;j+=1){
                 this.frutas[i][j] = new ArrayList<Fruta>();
@@ -136,12 +156,14 @@ public class Floresta {
     }
     
     public void addListaInicialFrutas(Fruta fruta){
-        //add fruta para lista inicial
+        /*add fruta para lista inicial que é usada antes de espalhar as
+          as frutas pelo em this.frutas*/
         listaInicialFrutas.add(fruta);
     }
     
     public void bichaFrutas(ArrayList<Fruta> frutas, int m){
-        //Torna a fruta podre
+        /*Recebe um arraylist com frutas, e transforma parte dessas frutas
+        //em frutas podres*/
         for (int i=0;i<=m;i+=1){
             frutas.get(i).setBichada(true);
         }
@@ -150,7 +172,7 @@ public class Floresta {
     public ArrayList<Fruta> criaFrutas(int m, int ouro, float quantCoco,
         float quantAbacate, float quantLaranja, float quantMorango, 
         float quantAmora, float quantUva, int quantMaracuja){
-        //cria objetos fruta, e os insere na lista inicial
+        //cria objetos fruta, e os insere em uma lista inicial
         int i = 0;
         int j = 0;
         for (int k=0;k<=((m*m)*quantCoco);k+=1){
@@ -192,12 +214,18 @@ public class Floresta {
         return listaInicialFrutas;
     }
     
-    public void inserirFrutas(ArrayList<Fruta> frutas, int m){
+    public void espalhaFrutas(ArrayList<Fruta> frutas, int m){
+        //Recebe um arraylist de frutas, e as espalha sobre this.frutas 
         for (int k=0;k<=frutas.size();k+=1){
             int i = new Random().nextInt(m);//posicao x
             int j = new Random().nextInt(m);//posicao y
             this.frutas[i][j].add(frutas.get(k));
         }    
+    }
+    
+    public void insereFruta(Fruta fruta){
+        //insere fruta caída no arraylist da posicao da fruta
+        this.frutas[fruta.getPosiçãoX()][fruta.getPosiçãoY()].add(fruta);
     }
     
 }
