@@ -14,13 +14,26 @@ public class Regras {
     int quantFrutasEmpurrao; //quantidade de frutas = max(0, empurrao​)
     int calculoEmpurrao; //empurrão = round(log2(f_a+1)) - round(log2(f_d+1))
     
-    public int calculoEmpurrao(int a, int d){
+    
+    public boolean Vitorioso(Avatar a, int frutasOuro){// frutasOuro==quantMaracuja
+        if (a.getPVitoria()>=((frutasOuro/2)+1)){
+            return true;
+        } else{
+            return false;
+        }
+    }
+    
+    public int calculoQuantFrutasEmpurrao(Avatar x, Avatar y){
+        quantFrutasEmpurrao = Math.max(0, calculoEmpurrao(x,y));
+        return quantFrutasEmpurrao;
+    }
+    
+    public int calculoEmpurrao(Avatar x, Avatar y){
+        int a = x.getPForça();
+        int d = y.getPForça();
         calculoEmpurrao = (int)(Math.round(Math.log(a+1)) - Math.round(Math.log(d+1)));
         return calculoEmpurrao;
     }
     
-    public int calculoQuantFrutasEmpurrao(int a, int d){
-        quantFrutasEmpurrao = Math.max(0, calculoEmpurrao(a,d));
-        return quantFrutasEmpurrao;
-    }
+    
 }

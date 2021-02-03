@@ -12,12 +12,10 @@ package cata_frutas;
 public class Item {
     int posiçãoX;
     int posiçãoY;
-    boolean estatico;
 
-    public Item(int posiçãoX, int posiçãoY, boolean estatico) {
+    public Item(int posiçãoX, int posiçãoY) {
         this.posiçãoX = posiçãoX;
         this.posiçãoY = posiçãoY;
-        this.estatico = estatico;
     }
 
     public int getPosiçãoX() {
@@ -34,14 +32,6 @@ public class Item {
 
     public void setPosiçãoY(int posiçãoY) {
         this.posiçãoY = posiçãoY;
-    }
-
-    public boolean isEstatico() {
-        return estatico;
-    }
-
-    public void setEstatico(boolean estatico) {
-        this.estatico = estatico;
     }
     
 }

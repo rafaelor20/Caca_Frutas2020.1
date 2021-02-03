@@ -25,12 +25,16 @@ public class Mochila {
         }
     }
     
-    public void removeFruta(String tipo){
+    public void usaFruta(String tipo){
         for (int i=0; i>= this.inventario.size(); i+=1){
             if (this.inventario.get(i).getTipo() == tipo){
                 this.inventario.remove(i);
             }
         }
+    }
+    
+    public void derrubaFruta(){
+        this.inventario.remove(0);
     }
     
     public Fruta getFruta(String tipo){
@@ -49,6 +53,26 @@ public class Mochila {
             }
         }
         return false;
+    }
+
+    public int getCapacidade() {
+        return capacidade;
+    }
+
+    public void setCapacidade(int capacidade) {
+        this.capacidade = capacidade;
+    }
+
+    public ArrayList<Fruta> getInventario() {
+        return inventario;
+    }
+
+    public void setInventario(ArrayList<Fruta> inventario) {
+        this.inventario = inventario;
+    }
+    
+    public int quantFrutas(){
+        return this.inventario.size();
     }
     
 }

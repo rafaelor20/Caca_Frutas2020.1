@@ -12,8 +12,8 @@ package cata_frutas;
 public class Pedra extends Item{
     int custoPAgilidade;
 
-    public Pedra( boolean estatico, int posiçãoX, int posiçãoY, int custoPAgilidade) {
-        super(posiçãoX, posiçãoY, estatico);
+    public Pedra(int posiçãoX, int posiçãoY, int custoPAgilidade) {
+        super(posiçãoX, posiçãoY);
         this.custoPAgilidade = custoPAgilidade;
     }
 

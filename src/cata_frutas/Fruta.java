@@ -17,8 +17,8 @@ public class Fruta extends Item{
     boolean antidoto;
     boolean bichada;
 
-    public Fruta(int posiçãoX, int posiçãoY, boolean estatico, String tipo, boolean bichada){
-        super(posiçãoX, posiçãoY, estatico);
+    public Fruta(int posiçãoX, int posiçãoY, String tipo, boolean bichada){
+        super(posiçãoX, posiçãoY);
         this.tipo = tipo;
         switch (this.tipo){
             case "maracuja":

@@ -6,6 +6,7 @@
 package cata_frutas;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 /**
  *
@@ -13,28 +14,34 @@ import java.util.Random;
  */
 
 public class Floresta {
-    int tamanhoFloresta;
+    
     Item[][] terreno; // tabuleiro para grama e pedras
     Arvore[][] arvores; // tabuleiro para arvores
     Avatar[][] avatares; // tabuleiro para avatares
-    ArrayList<Fruta>[][] frutas; // tabuleiro para listas de frutas, acho que várias frutas podem ocupar uma mesma posição
+    ArrayList<Fruta>[][] frutas;/* tabuleiro para listas de frutas, permitindo 
+                                   que várias frutas ocupem uma mesma posição*/
     
-    
-    int quantArvores; // <= quantGrama
-    int quantPedras; // m/4
-    int quantGrama; // m-quantPedras
-    int quantFrutasFloresta; // quantGrama/5
+    int tamanhoFloresta;
+    float quantArvores; // <= quantGrama
+    float quantPedras; // m/4
+    float quantGrama; // m-quantPedras
+    float quantFrutasFloresta; // quantGrama/5
+    ArrayList<Fruta> listaInicialFrutas;//lista inicial para criacao das frutas
     int quantMaracuja; // >=3
-    int quantAbacate; // quantFrutasFloresta/25
-    int quantCoco; // quantFrutasFloresta/25
-    int quantLaranja; // (quantFrutasFloresta/100)*15
-    int quantMorango; // (quantFrutasFloresta/100)*15
-    int quantAmora; //(quantFrutasFloresta/100)*15
+    float quantAbacate; // quantFrutasFloresta/25
+    float quantCoco; // quantFrutasFloresta/25
+    float quantLaranja; // (quantFrutasFloresta/100)*15
+    float quantMorango; // (quantFrutasFloresta/100)*15
+    float quantAmora; //(quantFrutasFloresta/100)*15
+    float quantUva;
     int quantBichadas; // (quantFrutasFloresta/100)*30 
     
     
     public Floresta(int m) {
         this.terreno = new Item[m][m];
+        this.arvores = new Arvore[m][m];
+        this.avatares = new Avatar[m][m];
+        this.frutas = new ArrayList[m][m];
         
     }
     
@@ -58,7 +65,7 @@ public class Floresta {
         int j = 0; //posicao y
         int c = 1; //custoAgilidade
         for(int i=0; i<=(m*m)*0.75;i+=i){
-            Grama grama = new Grama(true,k,j,c);
+            Grama grama = new Grama(k,j,c);
             inserirGP(grama, m);
         }
     }
@@ -68,7 +75,7 @@ public class Floresta {
         int j = 0; //posicao y
         int c = 3; //custoAgilidade
         for(int i=0; i<=(m*m)*0.25;i+=i){
-            Pedra pedra = new Pedra(true,k,j,c);
+            Pedra pedra = new Pedra(k,j,c);
             inserirGP(pedra, m);
         }
     }
@@ -96,39 +103,101 @@ public class Floresta {
         int qr = new Random().nextInt(q);//randomiza quantidade de arvores, mas nao sei se isso vai ser necessario
         for(int j=0;j<=qr*0.05;){
             t = "coco";
-            Arvore arvore = new Arvore(true,0,0,0,t);
+            Arvore arvore = new Arvore(0,0,0,t);
             inserirA(arvore, m);}
         for(int j=0;j<=qr*0.05;){
             t = "abacate";
-            Arvore arvore = new Arvore(true,0,0,0,t);
+            Arvore arvore = new Arvore(0,0,0,t);
             inserirA(arvore, m);}
         for(int j=0;j<=qr*0.15;){
             t = "laranja";
-            Arvore arvore = new Arvore(true,0,0,0,t);
+            Arvore arvore = new Arvore(0,0,0,t);
             inserirA(arvore, m);}
         for(int j=0;j<=qr*0.25;){
             t = "morango";
-            Arvore arvore = new Arvore(true,0,0,0,t);
+            Arvore arvore = new Arvore(0,0,0,t);
             inserirA(arvore, m);}
         for(int j=0;j<=qr*0.25;){
             t = "amora";
-            Arvore arvore = new Arvore(true,0,0,0,t);
+            Arvore arvore = new Arvore(0,0,0,t);
             inserirA(arvore, m);}
         for(int j=0;j<=qr*0.25;){
             t = "uva";
-            Arvore arvore = new Arvore(true,0,0,0,t);
+            Arvore arvore = new Arvore(0,0,0,t);
             inserirA(arvore, m);}  
     }
     
-    public void Frutas(int m, String t){ //cria objetos fruta-nao-ouro, mas ainda não sei onde guardá-las para iniciar o jogo
-        int k = 0;//posicao x
-        int j = 0;//posicao y
-        int q = (int)(((m*m)*0.75)*0.2);//limite da quant de frutas baseado na quant de gramas
-        for(int i=0; i<=((((m*m)*0.75)*0.2)*(q*0.01))*0.7;i+=i){
-            Fruta fruta = new Fruta(k,j,false,t,false);
-        }
-        for(int i=0; i<=((((m*m)*0.75)*0.2)*(q*0.01))*0.3;i+=i){
-            Fruta fruta = new Fruta(k,j,false,t,true);
+    public void CriaArrayListFrutas(int m){
+        for (int i=0;i<=m;i+=1){
+            for(int j=0;j<=m;j+=1){
+                this.frutas[i][j] = new ArrayList<Fruta>();
             }
+        }
     }
+    
+    public void addListaInicialFrutas(Fruta fruta){
+        //add fruta para lista inicial
+        listaInicialFrutas.add(fruta);
+    }
+    
+    public void bichaFrutas(ArrayList<Fruta> frutas, int m){
+        //Torna a fruta podre
+        for (int i=0;i<=m;i+=1){
+            frutas.get(i).setBichada(true);
+        }
+    }
+    
+    public ArrayList<Fruta> criaFrutas(int m, int ouro, float quantCoco,
+        float quantAbacate, float quantLaranja, float quantMorango, 
+        float quantAmora, float quantUva, int quantMaracuja){
+        //cria objetos fruta, e os insere na lista inicial
+        int i = 0;
+        int j = 0;
+        for (int k=0;k<=((m*m)*quantCoco);k+=1){
+            Fruta coco = new Fruta(i,j,"coco",true);
+            addListaInicialFrutas(coco);
+        }
+        for(int k=0;k<=((m*m)*quantAbacate);k+=1){
+            Fruta abacate = new Fruta(i,j,"abacate",true);
+            addListaInicialFrutas(abacate);
+        }
+        for(int k=0;k<=((m*m)*quantLaranja);k+=1){
+            Fruta laranja = new Fruta(i,j,"laranja",true);
+            addListaInicialFrutas(laranja);
+        }
+        
+        for(int k=0;k<=((m*m)*quantMorango);k+=1){
+            Fruta morango = new Fruta(i,j,"morango",true);
+            addListaInicialFrutas(morango);
+        }
+        
+        for(int k=0;k<=((m*m)*quantAmora);k+=1){
+            Fruta amora = new Fruta(i,j,"amora",true);
+            addListaInicialFrutas(amora);
+        }
+        
+        for(int k=0;k<=((m*m)*quantUva);k+=1){
+            Fruta uva = new Fruta(i,j,"uva",true);
+            addListaInicialFrutas(uva);
+        }
+        
+        for(int k=0;k<=((m*m)*quantMaracuja);k+=1){
+            Fruta maracuja = new Fruta(i,j,"maracuja",true);
+            addListaInicialFrutas(maracuja);
+        }
+        
+        quantBichadas = (int)((m*m)*0.3);
+        bichaFrutas(listaInicialFrutas, (int) quantBichadas);
+        Collections.shuffle(listaInicialFrutas);
+        return listaInicialFrutas;
+    }
+    
+    public void inserirFrutas(ArrayList<Fruta> frutas, int m){
+        for (int k=0;k<=frutas.size();k+=1){
+            int i = new Random().nextInt(m);//posicao x
+            int j = new Random().nextInt(m);//posicao y
+            this.frutas[i][j].add(frutas.get(k));
+        }    
+    }
+    
 }

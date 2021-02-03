@@ -13,8 +13,8 @@ public class Arvore extends Item{
     int periodoFrutaArvore;
     String tipo;
 
-    public Arvore(boolean estatico, int posiçãoX, int posiçãoY, int periodoFrutaArvore, String tipo) {
-        super(posiçãoX, posiçãoY, estatico);
+    public Arvore(int posiçãoX, int posiçãoY, int periodoFrutaArvore, String tipo) {
+        super(posiçãoX, posiçãoY);
         this.periodoFrutaArvore = periodoFrutaArvore;
         this.tipo = tipo;
     }
@@ -34,7 +34,5 @@ public class Arvore extends Item{
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    
-    
     
 }

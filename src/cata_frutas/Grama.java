@@ -12,8 +12,8 @@ package cata_frutas;
 public class Grama extends Item {
     int custoPAgilidade;
 
-    public Grama(boolean estatico, int custoPAgilidade, int posiçãoX, int posiçãoY) {
-        super(posiçãoX, posiçãoY, estatico);
+    public Grama(int custoPAgilidade, int posiçãoX, int posiçãoY) {
+        super(posiçãoX, posiçãoY);
         this.custoPAgilidade = custoPAgilidade;
     }
     
