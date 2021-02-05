@@ -35,6 +35,7 @@ public class Tabuleiro extends JFrame {
 			
 			@Override
 			public void keyPressed(KeyEvent e) {
+				System.out.println(e.getKeyCode()); //saida no console
 				if(e.getKeyCode()==39) {
 					//direita
 				}
