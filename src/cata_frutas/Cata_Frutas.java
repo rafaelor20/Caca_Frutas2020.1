@@ -19,7 +19,8 @@ public class Cata_Frutas {
         Avatar avatar1 = new Avatar(0,0,"Avatar 1", 1,1,0,true);
         Avatar avatar2 = new Avatar(0,0,"Avatar 2", 1,1,0,true);
         Floresta floresta = new Floresta(9);
-        Tabuleiro tabuleiro = new Tabuleiro();
+        Tabuleiro tabuleiro = new Tabuleiro();	
+        tabuleiro.display();
         tabuleiro.Control();
                
     }
