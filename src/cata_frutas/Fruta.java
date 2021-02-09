@@ -120,5 +120,4 @@ public class Fruta extends Item{
     public void setBichada(boolean bichada) {
         this.bichada = bichada;
     }
-    
 }

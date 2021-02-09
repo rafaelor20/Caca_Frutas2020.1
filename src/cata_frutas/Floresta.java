@@ -5,9 +5,7 @@
  */
 package cata_frutas;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
+import java.util.*;
 /**
  *
  * @author rafael
@@ -15,217 +13,73 @@ import java.util.Random;
 
 public class Floresta {
     
-    Item[][] terreno; // tabuleiro para grama e pedras
-    Arvore[][] arvores; // tabuleiro para arvores
-    Avatar[][] avatares; // tabuleiro para avatares
-    ArrayList<Fruta>[][] frutas;/* tabuleiro para listas de frutas, permitindo 
+    Terreno terreno; // tabuleiro para grama e pedras
+    Arvores arvores; // tabuleiro para arvores
+    Avatares avatares; // tabuleiro para avatares
+    Frutas frutas;/* tabuleiro para listas de frutas, permitindo 
                                    que várias frutas ocupem uma mesma posição*/    
     int tamanhoFloresta;
     float quantArvores; // <= quantGrama
     float quantPedras; // m/4
     float quantGrama; // m-quantPedras
     float quantFrutasFloresta; // quantGrama/5
-    ArrayList<Fruta> listaInicialFrutas;//lista inicial para criacao das frutas
-    int quantMaracuja; // >=3
-    float quantAbacate; // quantFrutasFloresta/25
-    float quantCoco; // quantFrutasFloresta/25
-    float quantLaranja; // (quantFrutasFloresta/100)*15
-    float quantMorango; // (quantFrutasFloresta/100)*15
-    float quantAmora; //(quantFrutasFloresta/100)*15
-    float quantUva;
-    int quantBichadas; // (quantFrutasFloresta/100)*30 
     
     
-    public Floresta(int m) {
-        this.terreno = new Item[m][m];
-        this.arvores = new Arvore[m][m];
-        this.avatares = new Avatar[m][m];
-        this.frutas = new ArrayList[m][m];       
+    
+    public Floresta(int tamanhoFloresta) {
+        this.tamanhoFloresta = tamanhoFloresta;
+        this.terreno = new Terreno(tamanhoFloresta);
+        System.out.println("terreno ok");
+        this.arvores = new Arvores(tamanhoFloresta);
+        System.out.println("arvores ok");
+        this.avatares = new Avatares(tamanhoFloresta);
+        System.out.println("avatares ok");
+        this.frutas = new Frutas(tamanhoFloresta);
+        System.out.println("frutas ok");
+        checaAvoresPedras();
     }
     
-    public Item[][] inserirGP(Item item, int m){ 
-        //insere gramas e pedras em this.terreno
-        int temp = 0;
-        while (temp==0){
-            int i = new Random().nextInt(m); //posicao x em this.terreno
-            int j = new Random().nextInt(m); //posiçao y
-            if (this.terreno[i][j]==null){
-                this.terreno[i][j] = item;
-                item.setPosiçãoX(i);
-                item.setPosiçãoY(j);
-                temp = 1;
-            }        
-        }        
-        return this.terreno;
+    private void checaAvoresPedras(){ 
+        //verifica se há arvores sobre pedras
+        int x = 0;
+        int y = 0;
+        for (int i=0;i>=this.tamanhoFloresta;i+=1){
+            for(int j=0;j>=this.tamanhoFloresta;j+=1){
+                if (this.terreno.qualItem(i,j) instanceof Pedra || 
+                                        this.arvores.temArvore(i,j)){
+                    checaArvorePedra(this.arvores.getArvore(i, j));
+                }
+            }
+        }      
     }
     
-    public void Gramado(int m){ 
-        //cria objetos Grama e os inserem em this.terreno
-        int k = 0; //posicao x
-        int j = 0; //posicao y
-        int c = 1; //custoAgilidade
-        for(int i=0; i<=(m*m)*0.75;i+=i){
-            Grama grama = new Grama(k,j,c);
-            inserirGP(grama, m);
+    private void checaArvorePedra(Arvore arvore){
+        //verifica se a arvore está encima de uma pedra
+        int x = arvore.getPosiçãoX();
+        int y = arvore.getPosiçãoY();
+        if (this.terreno.qualItem(x,y) instanceof Pedra){
+            x= new Random().nextInt(this.tamanhoFloresta);//posicao x
+            y= new Random().nextInt(this.tamanhoFloresta);//posicao y
+            arvore.setPosiçãoX(x);
+            arvore.setPosiçãoY(y);
+            checaArvorePedra(arvore);
+        } else{
+        this.arvores.insereArvore(arvore);
         }
     }
     
-    public void Pedras(int m){ 
-        //cria objetos Pedra e os inserem em this.terreno
-        int k = 0; //posicao x
-        int j = 0; //posicao y
-        int c = 3; //custoAgilidade
-        for(int i=0; i<=(m*m)*0.25;i+=i){
-            Pedra pedra = new Pedra(k,j,c);
-            inserirGP(pedra, m);
-        }
-    }
-    
-    public Arvore[][] inserirA(Arvore arvore, int m){ 
-        //insere obejtos Arvore em this.arvores
-        int temp = 0;
-        while (temp==0){
-            int i = new Random().nextInt(m);//posicao x
-            int j = new Random().nextInt(m);//posicao y
-            if (this.terreno[i][j] instanceof Grama && this.arvores[i][j] == null){
-                this.arvores[i][j] = arvore;
-                arvore.setPosiçãoX(i);
-                arvore.setPosiçãoY(j);
-                temp = 1;
-            }         
-        }        
-        return this.arvores;
-    }
-    
-    
-    
-    public void Arvores(int m){ // cria objetos arvore
-        String t = "";//especie de arvore
-        int q = (int)((m*m)*0.75);//quantidade de arvores maxima
-        int qr = new Random().nextInt(q);//randomiza quantidade de arvores, mas nao sei se isso vai ser necessario
-        for(int j=0;j<=qr*0.05;){
-            t = "coco";
-            Arvore arvore = new Arvore(0,0,0,t);
-            inserirA(arvore, m);}
-        for(int j=0;j<=qr*0.05;){
-            t = "abacate";
-            Arvore arvore = new Arvore(0,0,0,t);
-            inserirA(arvore, m);}
-        for(int j=0;j<=qr*0.15;){
-            t = "laranja";
-            Arvore arvore = new Arvore(0,0,0,t);
-            inserirA(arvore, m);}
-        for(int j=0;j<=qr*0.25;){
-            t = "morango";
-            Arvore arvore = new Arvore(0,0,0,t);
-            inserirA(arvore, m);}
-        for(int j=0;j<=qr*0.25;){
-            t = "amora";
-            Arvore arvore = new Arvore(0,0,0,t);
-            inserirA(arvore, m);}
-        for(int j=0;j<=qr*0.25;){
-            t = "uva";
-            Arvore arvore = new Arvore(0,0,0,t);
-            inserirA(arvore, m);}  
-    }
-    
-    public Avatar[][] inserirAvatar(Avatar avatar, int m){
+    public void inserirAvatar(Avatar avatar, int m){
         //insere obejto Avatar em this.avatares em posicao aleatoria
         int temp = 0;
         while (temp==0){
             int i = new Random().nextInt(m);//posicao x
             int j = new Random().nextInt(m);//posicao y
-            if (this.terreno[i][j] instanceof Grama && this.avatares[i][j] == null){
-                this.avatares[i][j] = avatar;
+            if (this.terreno.qualItem(j,j) instanceof Grama ||  !(this.avatares.temAvatar(i,j))){
                 avatar.setPosiçãoX(i);
                 avatar.setPosiçãoY(j);
+                this.avatares.posicionaAvatar(avatar);
                 temp = 1;
-            }         
-        }        
-        return this.avatares;
-    }
-    
-    public void CriaArrayListFrutas(int m){
-        /*cria arraylists em que as frutas serao depositadas de acordo com a
-          sua psicao*/
-        for (int i=0;i<=m;i+=1){
-            for(int j=0;j<=m;j+=1){
-                this.frutas[i][j] = new ArrayList<Fruta>();
             }
         }
     }
-    
-    public void addListaInicialFrutas(Fruta fruta){
-        /*add fruta para lista inicial que é usada antes de espalhar as
-          as frutas pelo em this.frutas*/
-        listaInicialFrutas.add(fruta);
-    }
-    
-    public void bichaFrutas(ArrayList<Fruta> frutas, int m){
-        /*Recebe um arraylist com frutas, e transforma parte dessas frutas
-        //em frutas podres*/
-        for (int i=0;i<=m;i+=1){
-            frutas.get(i).setBichada(true);
-        }
-    }
-    
-    public ArrayList<Fruta> criaFrutas(int m, int ouro, float quantCoco,
-        float quantAbacate, float quantLaranja, float quantMorango, 
-        float quantAmora, float quantUva, int quantMaracuja){
-        //cria objetos fruta, e os insere em uma lista inicial
-        int i = 0;
-        int j = 0;
-        for (int k=0;k<=((m*m)*quantCoco);k+=1){
-            Fruta coco = new Fruta(i,j,"coco",true);
-            addListaInicialFrutas(coco);
-        }
-        for(int k=0;k<=((m*m)*quantAbacate);k+=1){
-            Fruta abacate = new Fruta(i,j,"abacate",true);
-            addListaInicialFrutas(abacate);
-        }
-        for(int k=0;k<=((m*m)*quantLaranja);k+=1){
-            Fruta laranja = new Fruta(i,j,"laranja",true);
-            addListaInicialFrutas(laranja);
-        }
-        
-        for(int k=0;k<=((m*m)*quantMorango);k+=1){
-            Fruta morango = new Fruta(i,j,"morango",true);
-            addListaInicialFrutas(morango);
-        }
-        
-        for(int k=0;k<=((m*m)*quantAmora);k+=1){
-            Fruta amora = new Fruta(i,j,"amora",true);
-            addListaInicialFrutas(amora);
-        }
-        
-        for(int k=0;k<=((m*m)*quantUva);k+=1){
-            Fruta uva = new Fruta(i,j,"uva",true);
-            addListaInicialFrutas(uva);
-        }
-        
-        for(int k=0;k<=((m*m)*quantMaracuja);k+=1){
-            Fruta maracuja = new Fruta(i,j,"maracuja",true);
-            addListaInicialFrutas(maracuja);
-        }
-        
-        quantBichadas = (int)((m*m)*0.3);
-        bichaFrutas(listaInicialFrutas, (int) quantBichadas);
-        Collections.shuffle(listaInicialFrutas);
-        return listaInicialFrutas;
-    }
-    
-    public void espalhaFrutas(ArrayList<Fruta> frutas, int m){
-        //Recebe um arraylist de frutas, e as espalha sobre this.frutas 
-        for (int k=0;k<=frutas.size();k+=1){
-            int i = new Random().nextInt(m);//posicao x
-            int j = new Random().nextInt(m);//posicao y
-            this.frutas[i][j].add(frutas.get(k));
-        }    
-    }
-    
-    public void insereFruta(Fruta fruta){
-        //insere fruta caída no arraylist da posicao da fruta
-        this.frutas[fruta.getPosiçãoX()][fruta.getPosiçãoY()].add(fruta);
-    }
-    
 }
