@@ -63,7 +63,7 @@ public class Tabuleiro extends JFrame {
 		this.add(painel); 
 		painel.setLayout(null); //tem que setar com o BOUNDS
 		painel.add(Boneco);
-		Boneco.setBounds(50,200,100,120);
+		Boneco.setBounds(x,200,100,120);
 		LayoutAtributos personagem1 = new LayoutAtributos();
 		painel.add(personagem1);
 		personagem1.setBounds(10,10,200,90);
@@ -87,18 +87,69 @@ public class Tabuleiro extends JFrame {
 		
 		
 		
-		JButton bttEmpurra = new JButton("Empurrar");
-		bttEmpurra.addActionListener(new ActionListener() {
+		JButton bttDireita = new JButton("RIGHT");
+		bttDireita.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Empurrou");
+				System.out.println("Andou para Direita");
+				x+=10;
+				Boneco.setBounds(x,y,100,120);			
+			}
+			
+		})	;
+		
+		JButton bttEsquerda = new JButton("LEFT");
+		bttEsquerda.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Andou para esquerda");	
+				x -= 10; 
+				Boneco.setBounds(x,y,100,120);			
+			}
+		});
+		
+		JButton bttCima = new JButton("UP");
+		bttCima.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Andou para Cima");		
+				y-=10;
+				Boneco.setBounds(x,y,100,120);
 				
 			}
 		});
 		
-		painel.add(bttEmpurra);
-		bttEmpurra.setBounds(15,325,90,35);
+		JButton bttBaixo = new JButton("DOWN");
+		bttBaixo.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Andou pra baixo");
+				y+=10;
+				Boneco.setBounds(x,y,100,120);
+				
+			}
+		});
+		
+		
+		
+		painel.add(bttEsquerda);
+		bttEsquerda.setBounds(15,325,90,35); //x,y,h,l
+		
+		painel.add(bttDireita);
+		bttDireita.setBounds(110,325,90,35); //organizar
+		
+		painel.add(bttCima);
+		bttCima.setBounds(67,290,90,35);
+		
+		painel.add(bttBaixo);
+		bttBaixo.setBounds(67,360,90,35);
+		
+		
+		
 		
 		
 		/*
@@ -132,50 +183,11 @@ public class Tabuleiro extends JFrame {
 	
 	
 	
-/*
-	public Tabuleiro() {
-		super("Caça Frutas");
-		
-		
-		
-		
-		
-		
-		JPanel painel = new JPanel();
-		this.add(painel);
-		painel.setLayout(null);
-		
-		
-		JPanel personagem1 = new JPanel();
-		personagem1.setLayout(null);
-		painel.add(personagem1);
-		personagem1.setBounds(10, 10, 200,100);
-		personagem1.setBackground(Color.GREEN);
-		
-		JLabel nome = new JLabel("Nome:");
-		personagem1.add(nome);
-		nome.setBounds(10,10,50,25);
-		
-		JLabel pontosVida = new JLabel("PV:");
-		personagem1.add(pontosVida);
-		pontosVida.setBounds(10,40,50,25);
-		
-		
-		JLabel itens = new JLabel("Itens: ");
-		personagem1.add(itens);
-		itens.setBounds(10,70,50,25);
-		
-		
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setBounds(150,35,550,450);
-		this.setVisible(true);
-		
-		
-	}*/
-	
+
 	
 	
 	public void Control() {
+		/*
 		addKeyListener(new KeyListener() {
 			
 			@Override
@@ -196,7 +208,9 @@ public class Tabuleiro extends JFrame {
 				
 				if(e.getKeyCode()==39 ) {
 					
+					
 					x += 10;
+					
 					//direita
 				}
 				
@@ -211,17 +225,20 @@ public class Tabuleiro extends JFrame {
 					
 					y -= 10;
 					//cima
+				
 				}
 				
 				if(e.getKeyCode()==40) {
 					
 					y += 10;
 					//baixo
+					
 				}
-				Boneco.setBounds(x, y,109,100);
-
+				Boneco.setBounds(x,y,100,120);
 				
 			}
-		});
+		});*/
+		
+		
 	}
 }
