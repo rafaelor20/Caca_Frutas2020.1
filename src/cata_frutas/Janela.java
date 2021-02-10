@@ -1,11 +1,8 @@
 package cata_frutas;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-/**
-*
-* @author joao
-*/
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -15,50 +12,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Tabuleiro extends JFrame {
-
-	
-	int x =20 , y=200;
-	int px=1, py=1,posi;
-	boolean start = false , movimento = false;
-	
-	ImageIcon  img  = new ImageIcon(getClass().getResource("back.jpg"));
+public class Janela extends JFrame {
 	ImageIcon  boneco = new ImageIcon(getClass().getResource("avat2.png"));
-	ImageIcon pedra = new ImageIcon(getClass().getResource("peda.png"));
-	ImageIcon morango = new ImageIcon(getClass().getResource("moran.png"));
-
-	
-	JLabel foto = new JLabel(img);
 	JLabel Boneco = new JLabel(boneco);
-	JLabel Pedra [] [] = new JLabel [5] [5];
-	JLabel Morango [] [] = new JLabel [5] [5];
-	JLabel Ponto[][] = new JLabel [5][5];
-	private JFrame painel;
-	
-/*		char mapa[][] = {
-			{' ','r',' ',' ',' '},
-			{' ',' ','r',' ',' '},
-			{'p','p','p',' ',' '},
-			{' ','r','p',' ',' '},
-			{' ',' ','p','r',' '},
-			{' ','r',' ',' ',' '},
-			{' ',' ','r',' ',' '},
-			{'p','p','p',' ',' '},
-			{' ','r','p',' ',' '},
-			{' ',' ','p','r',' '},
-	};
-	*/
+	int x=0,y=0;
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	public void display() {
-		
+	public  Janela() {
+		super("Cata-Fruta");
 		JPanel painel = new JPanel();
 		this.add(painel); 
 		painel.setLayout(null); //tem que setar com o BOUNDS
@@ -119,7 +80,7 @@ public class Tabuleiro extends JFrame {
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setBounds(150,35,550,455);
-		this.setVisible(true);
+		this.setVisible(false);
 		
 
 		
@@ -127,56 +88,13 @@ public class Tabuleiro extends JFrame {
 		
 		
 		
-		
 	}
 	
-	
-	
-/*
-	public Tabuleiro() {
-		super("Caça Frutas");
-		
-		
-		
-		
-		
-		
-		JPanel painel = new JPanel();
-		this.add(painel);
-		painel.setLayout(null);
-		
-		
-		JPanel personagem1 = new JPanel();
-		personagem1.setLayout(null);
-		painel.add(personagem1);
-		personagem1.setBounds(10, 10, 200,100);
-		personagem1.setBackground(Color.GREEN);
-		
-		JLabel nome = new JLabel("Nome:");
-		personagem1.add(nome);
-		nome.setBounds(10,10,50,25);
-		
-		JLabel pontosVida = new JLabel("PV:");
-		personagem1.add(pontosVida);
-		pontosVida.setBounds(10,40,50,25);
-		
-		
-		JLabel itens = new JLabel("Itens: ");
-		personagem1.add(itens);
-		itens.setBounds(10,70,50,25);
-		
-		
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setBounds(150,35,550,450);
-		this.setVisible(true);
-		
-		
-	}*/
-	
-	
-	
+
+	//controle atraves do teclado
 	public void Control() {
-		addKeyListener(new KeyListener() {
+		
+	addKeyListener((KeyListener) new KeyListener() {
 			
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -218,10 +136,13 @@ public class Tabuleiro extends JFrame {
 					y += 10;
 					//baixo
 				}
-				Boneco.setBounds(x, y,109,100);
-
+				Boneco.setBounds(x,y,100,250);
+				
+				
 				
 			}
 		});
+		
+	
 	}
 }

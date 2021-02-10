@@ -29,13 +29,9 @@ public class Floresta {
     public Floresta(int tamanhoFloresta) {
         this.tamanhoFloresta = tamanhoFloresta;
         this.terreno = new Terreno(tamanhoFloresta);
-        System.out.println("terreno ok");
         this.arvores = new Arvores(tamanhoFloresta);
-        System.out.println("arvores ok");
         this.avatares = new Avatares(tamanhoFloresta);
-        System.out.println("avatares ok");
         this.frutas = new Frutas(tamanhoFloresta);
-        System.out.println("frutas ok");
         checaAvoresPedras();
     }
     
