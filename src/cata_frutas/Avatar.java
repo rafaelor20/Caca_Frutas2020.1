@@ -29,7 +29,12 @@ public class Avatar extends Item{
         this.mochila = new Mochila(9);
     }
     
-    public void usarFruta(String tipo){ //usa determinado tipo de fruta
+
+
+
+
+
+	public void usarFruta(String tipo){ //usa determinado tipo de fruta
         if (this.mochila.temFruta(tipo) == true){
             this.PForça = this.mochila.getFruta(tipo).getForça() * PForça;
             this.PAgilidade = this.mochila.getFruta(tipo).getAgilidade() * PAgilidade;

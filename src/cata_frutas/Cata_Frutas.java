@@ -21,7 +21,10 @@ public class Cata_Frutas {
         Floresta floresta = new Floresta(3);
         Tabuleiro tabuleiro = new Tabuleiro();
         tabuleiro.Control();
-               
+        tabuleiro.display();
+        Janela j = new Janela();
+        j.Control();
+        
     }
     
     
