@@ -24,9 +24,5 @@ public class Cata_Frutas {
         tabuleiro.display();
         Janela j = new Janela();
         j.Control();
-               
     }
-    
-    
-    
 }
