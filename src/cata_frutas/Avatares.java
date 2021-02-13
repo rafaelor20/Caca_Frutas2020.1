@@ -39,8 +39,24 @@ public class Avatares {
         Scanner scanner = new Scanner(s);
         s = s.toString();
         
+    
         
-        
+    }
+
+    public Avatar[][] getAvatares() {
+        return this.avatares;
+    }
+
+    public void setAvatares(Avatar[][] avatares) {
+        this.avatares = avatares;
+    }
+
+    public int getM() {
+        return this.m;
+    }
+
+    public void setM(int m) {
+        this.m = m;
     }
     
 }

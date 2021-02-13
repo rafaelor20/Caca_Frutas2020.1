@@ -127,5 +127,95 @@ public class Frutas {
         //insere fruta caída no arraylist da posicao da fruta
         this.frutas[fruta.getPosiçãoX()][fruta.getPosiçãoY()].add(fruta);
     }
+
+    public ArrayList<Fruta>[][] getFrutas() {
+        return this.frutas;
+    }
+
+    public void setFrutas(ArrayList<Fruta>[][] frutas) {
+        this.frutas = frutas;
+    }
+
+    public int getM() {
+        return m;
+    }
+
+    public void setM(int m) {
+        this.m = m;
+    }
+
+    public ArrayList<Fruta> getListaInicialFrutas() {
+        return listaInicialFrutas;
+    }
+
+    public void setListaInicialFrutas(ArrayList<Fruta> listaInicialFrutas) {
+        this.listaInicialFrutas = listaInicialFrutas;
+    }
+
+    public int getQuantMaracuja() {
+        return quantMaracuja;
+    }
+
+    public void setQuantMaracuja(int quantMaracuja) {
+        this.quantMaracuja = quantMaracuja;
+    }
+
+    public float getQuantAbacate() {
+        return quantAbacate;
+    }
+
+    public void setQuantAbacate(float quantAbacate) {
+        this.quantAbacate = quantAbacate;
+    }
+
+    public float getQuantCoco() {
+        return quantCoco;
+    }
+
+    public void setQuantCoco(float quantCoco) {
+        this.quantCoco = quantCoco;
+    }
+
+    public float getQuantLaranja() {
+        return quantLaranja;
+    }
+
+    public void setQuantLaranja(float quantLaranja) {
+        this.quantLaranja = quantLaranja;
+    }
+
+    public float getQuantMorango() {
+        return quantMorango;
+    }
+
+    public void setQuantMorango(float quantMorango) {
+        this.quantMorango = quantMorango;
+    }
+
+    public float getQuantAmora() {
+        return quantAmora;
+    }
+
+    public void setQuantAmora(float quantAmora) {
+        this.quantAmora = quantAmora;
+    }
+
+    public float getQuantUva() {
+        return quantUva;
+    }
+
+    public void setQuantUva(float quantUva) {
+        this.quantUva = quantUva;
+    }
+
+    public int getQuantBichadas() {
+        return quantBichadas;
+    }
+
+    public void setQuantBichadas(int quantBichadas) {
+        this.quantBichadas = quantBichadas;
+    }
+    
+    
     
 }
