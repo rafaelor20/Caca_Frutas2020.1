@@ -12,8 +12,8 @@ import java.util.Random;
  * @author rafael
  */
 public class Arvores {
-    Arvore[][] arvores;
-    int m;
+    Arvore[][] arvores;//matriz de posições para objetos arvore
+    int m;//tamanho da matriz
     
     public Arvores(int m){
         this.arvores = new Arvore[m][m];
@@ -85,6 +85,7 @@ public class Arvores {
     }
     
     public boolean temArvore(int x, int y){
+        //verifica se existe arvore na posicao
         if (this.arvores[x][y] instanceof Arvore){
             return true;
         } else{

@@ -56,7 +56,7 @@ public class Mochila {
     }
 
     public int getCapacidade() {
-        return capacidade;
+        return this.capacidade;
     }
 
     public void setCapacidade(int capacidade) {
@@ -64,7 +64,7 @@ public class Mochila {
     }
 
     public ArrayList<Fruta> getInventario() {
-        return inventario;
+        return this.inventario;
     }
 
     public void setInventario(ArrayList<Fruta> inventario) {

@@ -34,7 +34,8 @@ public class Avatar extends Item{
 
 
 
-	public void usarFruta(String tipo){ //usa determinado tipo de fruta
+    public void usarFruta(String tipo){ 
+        //usa determinado tipo de fruta
         if (this.mochila.temFruta(tipo) == true){
             this.PForça = this.mochila.getFruta(tipo).getForça() * PForça;
             this.PAgilidade = this.mochila.getFruta(tipo).getAgilidade() * PAgilidade;
@@ -44,13 +45,15 @@ public class Avatar extends Item{
         }
     }
     
-    public void derrubaFrutas(int f){ //Derruba Frutas caso seja vitima de um empurrao
+    public void derrubaFrutas(int f){ 
+        //Derruba Frutas caso seja vitima de um empurrao
         for(int i=0;i<f;i+=1){
             this.mochila.derrubaFruta();
         }
     }
     
     public void definePForça(){
+        //define forca do avatar como sendo igual ao numero de frutas no inventario
         this.PForça = this.mochila.quantFrutas();
     }
     

@@ -22,6 +22,7 @@ public class Fruta extends Item{
         this.tipo = tipo;
         switch (this.tipo){
             case "maracuja":
+                //fruta ouro
                 this.força = 1;
                 this.agilidade = 1;
                 this.ouro = 1;
@@ -29,6 +30,7 @@ public class Fruta extends Item{
                 this.bichada = bichada;
            
             case "coco":
+                //fruta agilidade
                 this.força = 1;
                 this.agilidade = 2;
                 this.ouro = 0;
@@ -36,6 +38,7 @@ public class Fruta extends Item{
                 this.bichada = bichada;
             
             case "abacate":
+                //fruta forca
                 this.força = 2;
                 this.agilidade = 1;
                 this.ouro = 0;
@@ -43,6 +46,7 @@ public class Fruta extends Item{
                 this.bichada = bichada;
             
             case "laranja":
+                //fruta antidoto
                 this.força = 1;
                 this.agilidade = 1;
                 this.ouro = 0;
@@ -50,6 +54,7 @@ public class Fruta extends Item{
                 this.bichada = bichada;
             
             case "morango":
+                //fruta sem sem propriedades extras
                 this.força = 1;
                 this.agilidade = 1;
                 this.ouro = 0;
@@ -57,6 +62,7 @@ public class Fruta extends Item{
                 this.bichada = bichada;
             
             case "amora":
+                //fruta sem sem propriedades extras
                 this.força = 1;
                 this.agilidade = 1;
                 this.ouro = 0;
@@ -64,6 +70,7 @@ public class Fruta extends Item{
                 this.bichada = bichada;
             
             case "uva":
+                //fruta sem sem propriedades extras
                 this.força = 1;
                 this.agilidade = 1;
                 this.ouro = 0;

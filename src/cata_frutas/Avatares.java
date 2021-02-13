@@ -13,8 +13,8 @@ import java.util.Scanner;
  * @author rafael
  */
 public class Avatares {
-    Avatar[][] avatares;
-    int m;
+    Avatar[][] avatares;//tabuleiro dos avatares
+    int m;//tamanho do tabuleiro
     
     public Avatares(int m){
         this.avatares = new Avatar[m][m];

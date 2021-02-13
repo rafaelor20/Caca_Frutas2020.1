@@ -10,8 +10,8 @@ package cata_frutas;
  * @author rafael
  */
 public class Arvore extends Item{
-    int periodoFrutaArvore;
-    String tipo;
+    int periodoFrutaArvore;//intervalo de turnos que a arvore derruba uma fruta
+    String tipo;//especie de arvore
 
     public Arvore(int posiçãoX, int posiçãoY, int periodoFrutaArvore, String tipo) {
         super(posiçãoX, posiçãoY);

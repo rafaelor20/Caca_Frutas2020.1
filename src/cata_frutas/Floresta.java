@@ -36,7 +36,7 @@ public class Floresta {
     }
     
     private void checaAvoresPedras(){ 
-        //verifica se há arvores sobre pedras
+        //verifica se há arvores sobre pedras em this.terreno
         int x = 0;
         int y = 0;
         for (int i=0;i>=this.tamanhoFloresta;i+=1){
@@ -64,12 +64,12 @@ public class Floresta {
         }
     }
     
-    public void inserirAvatar(Avatar avatar, int m){
+    public void inserirAvatar(Avatar avatar){
         //insere obejto Avatar em this.avatares em posicao aleatoria
         int temp = 0;
         while (temp==0){
-            int i = new Random().nextInt(m);//posicao x
-            int j = new Random().nextInt(m);//posicao y
+            int i = new Random().nextInt(this.tamanhoFloresta);//posicao x
+            int j = new Random().nextInt(this.tamanhoFloresta);//posicao y
             if (this.terreno.qualItem(j,j) instanceof Grama ||  !(this.avatares.temAvatar(i,j))){
                 avatar.setPosiçãoX(i);
                 avatar.setPosiçãoY(j);
