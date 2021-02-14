@@ -19,10 +19,9 @@ public class Floresta {
     Frutas frutas;/* tabuleiro para listas de frutas, permitindo 
                                    que várias frutas ocupem uma mesma posição*/    
     int tamanhoFloresta;
-    float quantArvores; // <= quantGrama
-    float quantPedras; // m/4
-    float quantGrama; // m-quantPedras
-    float quantFrutasFloresta; // quantGrama/5
+    Avatar avatar1;
+    Avatar avatar2;
+    
     
     
     
@@ -33,6 +32,10 @@ public class Floresta {
         this.avatares = new Avatares(tamanhoFloresta);
         this.frutas = new Frutas(tamanhoFloresta);
         checaAvoresPedras();
+        this.avatar1 = new Avatar(0,0,"Avatar 1", 1,1,0,true);
+        inserirAvatar(this.avatar1);
+        this.avatar2 = new Avatar(0,0,"Avatar 2", 1,1,0,true);
+        inserirAvatar(this.avatar2);
     }
     
     private void checaAvoresPedras(){ 

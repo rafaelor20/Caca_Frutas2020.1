@@ -14,8 +14,16 @@ public class Regras {
     int quantFrutasEmpurrao; //quantidade de frutas = max(0, empurrao​)
     int forcaEmpurrao; //empurrão = round(log2(f_a+1)) - round(log2(f_d+1))
     
+    /**
+     *
+     */
+    public Regras(){
+        
+    }
     
-    public boolean Vitorioso(Avatar a, int frutasOuro){// frutasOuro==quantMaracuja
+    
+    public boolean Vitorioso(Avatar a, int frutasOuro){
+        // frutasOuro==quantMaracuja
         if (a.getPVitoria()>=((frutasOuro/2)+1)){
             return true;
         } else{
